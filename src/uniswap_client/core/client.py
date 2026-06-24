@@ -153,7 +153,7 @@ class UniswapClient:
 
         for fee in [500, 3000]:
             try:
-                pool_addr = self.v3_factory.get_pool(addrs["weth"], addrs["usdc"], fee)
+                pool_addr = self.v3_factory.get_pool(addrs.weth, addrs.usdc, fee)
                 if pool_addr == "0x0000000000000000000000000000000000000000":
                     continue
 
@@ -163,7 +163,7 @@ class UniswapClient:
                 price_raw = sqrt_price**2
                 token0 = pool.token0()
 
-                if token0.lower() == addrs["weth"].lower():
+                if token0.lower() == addrs.weth.lower():
                     return float(price_raw * 10**12)  # 18 - 6 decimals
                 else:
                     return float((1 / price_raw) / 10**12)
@@ -311,7 +311,7 @@ class UniswapClient:
         addrs = get_addresses(chain_id)
         token_in = self._checksum(token_in)
         token_out = self._checksum(token_out)
-        router_addr = self._checksum(addrs["v3_router"])
+        router_addr = self._checksum(addrs.v3_router)
 
         erc20 = self._get_erc20()
         decimals_in = erc20.decimal(token_in)
@@ -375,7 +375,7 @@ class UniswapClient:
         }
 
     def _ensure_approval(self, token_addr: str, spender: str, amount: int) -> str:
-        token = self.w3.eth.contract(address=self._checksum(token_addr), abi=ERC20_ABI)
+        token = self.w3.eth.contract(address=self._checksum(token_addr), abi=ERC20_ABI())
         allowance = token.functions.allowance(self.account.address, spender).call()
 
         if allowance >= amount:
