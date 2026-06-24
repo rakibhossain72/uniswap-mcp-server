@@ -45,7 +45,7 @@ The server operates in two modes:
 Clone the repository and install dependencies.
 
 ```bash
-git clone https://github.com/your-org/uniswap-mcp-server.git
+git clone https://github.com/rakibhossain72/uniswap-mcp-server.git
 cd uniswap-mcp-server
 ```
 
