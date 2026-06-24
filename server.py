@@ -20,3 +20,8 @@ def get_client() -> UniswapClient:
         )
 
     return _client
+
+# Import all modules so the @mcp decorators are executed and registered
+import src.tools
+import src.resources
+import src.prompts

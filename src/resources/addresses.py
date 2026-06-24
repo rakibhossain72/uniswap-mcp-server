@@ -1,5 +1,5 @@
 import json
-from src.server import mcp, get_client
+from server import mcp, get_client
 from src.uniswap_client.addresses import get_addresses, ChainId
 
 @mcp.resource("protocol://addresses")

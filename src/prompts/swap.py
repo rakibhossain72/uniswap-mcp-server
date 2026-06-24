@@ -1,4 +1,4 @@
-from src.server import mcp
+from server import mcp
 
 
 @mcp.prompt()
