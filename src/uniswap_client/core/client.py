@@ -17,7 +17,7 @@ from src.uniswap_client.contracts import (
     V3Quoter,
     V3Router,
 )
-from  src.uniswap_client.abis import ERC20_ABI
+from src.uniswap_client.abis import ERC20_ABI
 
 
 class UniswapClient:
@@ -31,6 +31,8 @@ class UniswapClient:
         self.account = (
             self.w3.eth.account.from_key(private_key) if private_key else None
         )
+
+        self.chain_id = self.w3.eth.chain_id
 
         # Initialize contract wrappers (will be set per chain)
         self.erc20 = ERC20(self.w3)
