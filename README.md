@@ -485,47 +485,69 @@ Guides the model through a safe, confirmation-gated swap workflow. The model wil
 ## Project Structure
 
 ```
-uniswap-mcp-server/
-├── server.py                        # FastMCP server entry point and client singleton
-├── pyproject.toml                   # Project metadata and dependencies
-├── .env                             # Local environment variables (not committed)
-├── src/
-│   ├── config.py                    # Pydantic config model, loaded from environment
-│   ├── tools/
-│   │   ├── pools.py                 # get_v3_pool, get_v2_pair, get_pool_by_address
-│   │   ├── prices.py                # get_token_price
-│   │   ├── swaps.py                 # get_swap_quote, execute_swap
-│   │   └── tokens.py                # get_token_info
-│   ├── resources/
-│   │   ├── addresses.py             # protocol://addresses resource
-│   │   └── network.py               # network://status resource
-│   ├── prompts/
-│   │   ├── analyze.py               # analyze_token prompt
-│   │   └── swap.py                  # execute_trade prompt
-│   └── uniswap_client/
-│       ├── addresses.py             # Chain address registry and ChainId enum
-│       ├── core/
-│       │   └── client.py            # UniswapClient — orchestrates all contract calls
-│       ├── contracts/
-│       │   ├── base.py              # BaseContract
-│       │   ├── erc20.py             # ERC-20 wrapper
-│       │   ├── v2_factory.py        # Uniswap V2 Factory
-│       │   ├── v2_pair.py           # Uniswap V2 Pair
-│       │   ├── v3_factory.py        # Uniswap V3 Factory
-│       │   ├── v3_pool.py           # Uniswap V3 Pool
-│       │   ├── v3_quoter.py         # Uniswap V3 Quoter
-│       │   └── v3_router.py         # Uniswap V3 Router
-│       └── abis/                    # JSON ABI files for all contracts
-└── tests/
-    ├── conftest.py                  # Shared fixtures and address constants
-    ├── test_abis.py
-    ├── test_addresses.py
-    ├── test_client.py
-    ├── test_config.py
-    ├── test_contracts.py
-    ├── test_prompts.py
-    ├── test_resources.py
-    └── test_tools.py
+.
+├── pyproject.toml
+├── README.md
+├── scripts
+├── server.py
+├── src
+│   ├── config.py
+│   ├── main.py
+│   ├── prompts
+│   │   ├── analyze.py
+│   │   ├── __init__.py
+│   │   └── swap.py
+│   ├── resources
+│   │   ├── addresses.py
+│   │   ├── __init__.py
+│   │   └── network.py
+│   ├── tools
+│   │   ├── __init__.py
+│   │   ├── pools.py
+│   │   ├── prices.py
+│   │   ├── swaps.py
+│   │   └── tokens.py
+│   └── uniswap_client
+│       ├── abis
+│       │   ├── ERC20_ABI.json
+│       │   ├── get_abi.py
+│       │   ├── __init__.py
+│       │   ├── V2_FACTORY_ABI.json
+│       │   ├── V2_PAIR_ABI.json
+│       │   ├── V3_FACTORY_ABI.json
+│       │   ├── V3_POOL_ABI.json
+│       │   ├── V3_QUOTER_ABI.json
+│       │   └── V3_ROUTER_ABI.json
+│       ├── addresses.py
+│       ├── contracts
+│       │   ├── base.py
+│       │   ├── erc20.py
+│       │   ├── __init__.py
+│       │   ├── v2_factory.py
+│       │   ├── v2_pair.py
+│       │   ├── v3_factory.py
+│       │   ├── v3_pool.py
+│       │   ├── v3_quoter.py
+│       │   └── v3_router.py
+│       ├── core
+│       │   ├── client.py
+│       │   └── __init__.py
+│       ├── __init__.py
+│       └── utils
+│           └── __init__.py
+├── tests
+│   ├── conftest.py
+│   ├── __init__.py
+│   ├── test_abis.py
+│   ├── test_addresses.py
+│   ├── test_client.py
+│   ├── test_config.py
+│   ├── test_contracts.py
+│   ├── test_prompts.py
+│   ├── test_resources.py
+│   └── test_tools.py
+├── .env
+└── uv.lock
 ```
 
 ---
