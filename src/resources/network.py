@@ -1,6 +1,6 @@
 import asyncio
 import json
-from server import mcp, get_client
+from src.main import mcp, get_client
 
 @mcp.resource("network://status")
 async def get_network_status() -> str:

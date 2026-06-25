@@ -1,4 +1,4 @@
-from server import mcp, get_client
+from src.main import mcp, get_client
 import asyncio
 
 @mcp.tool()

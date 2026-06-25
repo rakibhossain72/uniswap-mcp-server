@@ -4,7 +4,7 @@ Tests for src/resources/ — MCP resource functions.
   - get_protocol_addresses  (protocol://addresses)
   - get_network_status      (network://status)
 
-Patching strategy: resource modules do `from server import mcp, get_client`
+Patching strategy: resource modules do `from src.main import mcp, get_client`
 at import time, so we patch the name in each module's own namespace.
 
 Async strategy: get_network_status uses asyncio.to_thread; we use

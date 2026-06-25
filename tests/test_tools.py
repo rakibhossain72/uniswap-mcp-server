@@ -1,7 +1,7 @@
 """
 Tests for src/tools/ — MCP tool functions.
 
-Patching strategy: each tool module does `from server import mcp, get_client`,
+Patching strategy: each tool module does `from src.main import mcp, get_client`,
 binding `get_client` into its own namespace.  We patch it there, e.g.
 `src.tools.prices.get_client`, not `server.get_client`.
 
